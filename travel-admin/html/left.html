@@ -1,0 +1,83 @@
+<!DoCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Admin Home Page</title>
+    <link href="../css/admin.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../travellers-main/images/package-icon.png">
+</head>
+
+<body>
+    <nav class="nav">
+        <div>
+            <img id="img" src="../images/destination.png" alt="logo" width="50px" height="40px">
+            <span id="logo">Traveller's Choice</span>
+        </div>
+        <p style="color: white;" id="login"></p>
+        <div class="webpreview">
+
+            <a href="./loginform.html">Logout</a>
+        </div>
+    </nav>
+    <div class="container">
+        <table style="width:100%;font-size:20px;padding:15px;">
+            <tr>
+                <th>ADMIN LINKS</th>
+            <tr>
+                <td><a href="updateadmin.html">UPDATE ADMIN</a></td>
+            </tr>
+            <tr>
+                <td><a href="deleteadmin.html">DELETE ADMIN</a></td>
+            </tr>
+            <tr>
+                <td><a href="viewadmin.html">VIEW ADMIN</a></td>
+            </tr>
+            <tr>
+                <td><a href="viewUser.html">VIEW USER</a></td>
+            </tr>
+            <tr>
+                <td><a href="viewregisteruser.html">VIEW REGISTER USER</a></td>
+            </tr>
+
+            <!-- package-->
+            <tr>
+                <td><a href="addpackage.html">ADD PACKAGE</a></td>
+            </tr>
+            <tr>
+                <td><a href="updatepackage.html">UPDATE PACKAGE</a></td>
+            </tr>
+            <tr>
+                <td><a href="deletepackage.html">DELETE PACKAGE</a></td>
+            </tr>
+            <tr>
+                <td><a href="viewpackage.html">VIEW PACKAGE</a></td>
+            </tr>
+
+            <!-- sub category-->
+            <tr>
+                <td><a href="addcategory.html">ADD CATEGORY</a></td>
+            </tr>
+            <tr>
+                <td><a href="updatecategory.html">UPDATE CATEGORY</a></td>
+            </tr>
+            <tr>
+                <td><a href="deletecategory.html">DELETE CATEGORY</a></td>
+            </tr>
+            <tr>
+                <td><a href="viewcategory.html">VIEW CATEGORY</a></td>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        function handleLoginChange(select) {
+            if (select.value === "logout") {
+                window.location.href = "loginform.html";
+            }
+        }
+    </script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>
