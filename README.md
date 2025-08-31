@@ -1,4 +1,4 @@
-# Traveler's Choice – Tour & Travel Management Website  
+# Traveler's Choice – Tour & Travel Management
 
 Traveler's Choice is a prototype web application that showcases excursions and sightseeing packages across India.  
 It allows users to explore packages based on different criteria (such as education or orientation) and book their preferred option.  
