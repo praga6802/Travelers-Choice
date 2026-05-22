@@ -7,26 +7,21 @@ async function displayUserName(){
             method:"GET",
             credentials:"include"
         });
+        const data=await response.json();
 
         if(!response){
-            error.innerText="User not found"
+            error.innerText=data.message;
             return;
         }
-        const text=await response.text();
-        if(!text)return;
 
-        const data=JSON.parse(text);
         if(!data.userId){
             error.innerText='Please Login to book tour!';
-            error.style.color='red';
-            error.style.marginTop='2%';
-            error.style.fontSize='18px';
             return;
         }
         document.getElementById('userId').value=data.userId;
     }
     catch(err){
-        console.log("Error fetching User Info",err);
+        console.log("Error: ",err);
         return;
     }
 }
@@ -47,12 +42,10 @@ document.addEventListener('DOMContentLoaded',async function loadIternaries(){
 
         if(!response.ok){
             error.innerText=responseData.message;
-            error.style.color='red';
             return;
         }
         if(!responseData || responseData.length===0){
             error.innerText='No Iternaries Found!';
-            error.style.color='red';
             return;
         }
         iternaryData=responseData;
@@ -60,15 +53,12 @@ document.addEventListener('DOMContentLoaded',async function loadIternaries(){
         const url=new URLSearchParams(window.location.search);
         const tourId=parseInt(url.get('tourId'));
         showIternaries(tourId);
-        console.log("Tour ID received:", tourId);
-        console.log("All Iternaries:", iternaryData);
 
         console.log(responseData);
     }
     catch(e){
         console.error("Failed to load Iternaries:", e);
         error.innerText = "Network Error.. Unable to reach server!";
-        error.style.color = 'red';
     }
 });
 
@@ -76,14 +66,12 @@ document.addEventListener('DOMContentLoaded',async function loadIternaries(){
 function showIternaries(tourId){
     if(!iternaryData || iternaryData.length===0){
             error.innerText='No Iternaries Found!';
-            error.style.color='red';
             return;
     }
 
     const iternaries=iternaryData.filter(it=>it.tourId==tourId);
     if(!iternaries || iternaries.length==0){
         error.innerText=`No Iternaries found for this tour`;
-        error.style.color='red';
         return;
     }
 

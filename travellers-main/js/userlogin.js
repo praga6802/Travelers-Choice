@@ -22,12 +22,11 @@ async function handleLogin(event) {
             setTimeout(() => window.location.href = '/travellers-main/html/index.html', 1000);
         } 
         else {
-            error.innerText =text.message;
-            error.style.color='red';
+            error.innerText=text.message;
+            console.log("Back end error:",text);
         }
     } catch (err) {
         error.innerText = "Network error..Please try again..";
-        error.style.color='red';
         console.error(err);
     }
 }

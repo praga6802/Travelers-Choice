@@ -1,5 +1,7 @@
 const form=document.getElementById("usersignup")
 form.addEventListener("submit",handleSignUp)
+
+
 const error=document.getElementById('error');
 
 async function handleSignUp(event){
@@ -24,19 +26,17 @@ async function handleSignUp(event){
         if(response.ok){
             alert(responseData.message);
             form.reset();
+            error.innerText='';
         }
         else{
+            console.error("Backend Error:",responseData);
             error.innerText=responseData.message;
-            error.style.color="red";
-            error.style.marginTop="10px";
-            error.style.marginLeft="100px";
         }
 
-        if(response.ok)data.innerText='';
     }
     catch(err){
-        error.innerText="Network Error..Please Try again";
         console.error(err);
+        error.innerText="Network Error..Please Try again";
     }
 }
 
