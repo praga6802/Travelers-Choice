@@ -95,6 +95,8 @@ nav{
   font-weight: 500;
   color:white;
 }
+
+
 #signin-btn{
   background-color:rgba(5, 117, 44, 0.809);
 }
@@ -105,18 +107,18 @@ nav{
 
 /* after login- select list*/
 #loginSelect{
-  background-color: rgba(39, 98, 198, 0.665);
+  background-color: black;
   color:white;
   border-radius: 5px;
-  font-weight: 600;
-  outline:2px solid white;
+  font-weight: 500;
+  outline:1px solid whitesmoke;
   height: min-content;
   padding:10px;
   margin-top: 5%;
 }
 
-.loginoption{
-  background-color: black;
+#loginSelect option{
+  background-color: rgb(6, 63, 154);
   color: white;
 }
 
@@ -127,12 +129,14 @@ nav{
 .carous{
   margin-top: 120px;
 }
+
+
 section h1{
   text-align: center;
   font-weight: bold;
   margin-top: 58px;
-  
 }
+
 .pic{
   margin-top: 30px;
   margin-left: 30px;

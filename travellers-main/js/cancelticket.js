@@ -1,8 +1,7 @@
 const error = document.getElementById('error');
 const form = document.getElementById('cancelform');
 
-//get the user data
-window.addEventListener("DOMContentLoaded",displayUserDetails);
+//get user data
 async function displayUserDetails(){
     try{
         const response=await fetch("http://localhost:8080/user/userData",{
@@ -10,22 +9,24 @@ async function displayUserDetails(){
             credentials:"include"
         });
         const responseData=await response.json();
-
+        
         if(!response.ok){
-            console.log("logged User");
+            console.log("Error",responseData);
+            error.innerText=responseData.message;
             return;
         }
+        console.log("User",responseData);
     }
     catch(e){
-        displayMessage('Network Error or Session Expired. Please login again!');
-        form.style.display='none';
-        setTimeout(()=>{window.location.href='../html/login.html'},1500);
+        console.error("Network Error",e);
+        alert("Network Error.. Redirect to login");
+        if (form)form.style.display='none';
+        setTimeout(()=>{window.location.href='../html/login.html'},2000);
     }
 }
 
 
 //cancel form
-
 form.addEventListener('submit', handleCancel);
 
 
@@ -34,10 +35,10 @@ async function handleCancel(event) {
     const pnrInp=document.getElementById('pnr');
     const PNR_NUMBER = pnrInp.value.trim();
     if (!PNR_NUMBER) {
-            displayMessage("Please provide PNR number for cancellation!");
-            return;
+        error.innerText=responseData.message;
+        return;
     }
-
+    
     try {
         const response = await fetch("http://localhost:8080/user/cancelTour", {
             method: "DELETE",
@@ -49,18 +50,16 @@ async function handleCancel(event) {
         const responseData = await response.json();
         
         if(response.status===401){
-            displayMessage(responseData.message);
+            error.innerText=responseData.message;
             return;
         }
-
+        
         alert(responseData.message);
         error.innerText = '';
         pnrInp.value = '';
-
-
-
+        
     } catch (e) {
-        displayMessage("Network Error.. Try again");
+        error.innerText="Network Error.. Try again";
         console.log(e);
     }
 }
@@ -70,9 +69,5 @@ form.addEventListener('reset', () => {
     PNR_NUMBER.value = '';
 });
 
-function displayMessage(msg, success = false) {
-    error.innerText = msg;
-    error.style.color = success ? "green" : "red";
-    error.style.marginLeft = "100px";
-    error.style.marginTop = "20px";
-}
+
+window.addEventListener("DOMContentLoaded",displayUserDetails);
